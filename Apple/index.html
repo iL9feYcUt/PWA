@@ -55,7 +55,7 @@
         const reg = await navigator.serviceWorker.ready;
         const subscription = await reg.pushManager.subscribe({
           userVisibleOnly: true,
-          applicationServerKey: 'YOUR_PUBLIC_VAPID_KEY' // VAPID公開鍵をここに
+          applicationServerKey: 'BIlo-Lcwmpoqr-a-MWjdQFphkaZydqlk70gSMC3zIkYxNaxIlbjL8CO3ODndjAIPyxfmaELASiPNWJEfysa4c2A' // VAPID公開鍵をここに
         });
         // サブスクリプションをサーバーに送信
         await fetch('YOUR_SERVER_ENDPOINT/subscribe', {
