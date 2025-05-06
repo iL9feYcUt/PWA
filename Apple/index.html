@@ -20,6 +20,9 @@
   <button id="subscribe">通知を有効化</button>
   <div id="feed"></div>
   <script>
+    // VAPID公開鍵（生成したpublicKeyをここに貼り付け）
+    const vapidPublicKey = 'BIlo-Lcwmpoqr-a-MWjdQFphkaZydqlk70gSMC3zIkYxNaxIlbjL8CO3ODndjAIPyxfmaELASiPNWJEfysa4c2A'; // 例: 'BHk...'
+
     // Service Worker登録
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/service-worker.js')
@@ -55,7 +58,7 @@
         const reg = await navigator.serviceWorker.ready;
         const subscription = await reg.pushManager.subscribe({
           userVisibleOnly: true,
-          applicationServerKey: 'BIlo-Lcwmpoqr-a-MWjdQFphkaZydqlk70gSMC3zIkYxNaxIlbjL8CO3ODndjAIPyxfmaELASiPNWJEfysa4c2A' // VAPID公開鍵をここに
+          applicationServerKey: urlB64ToUint8Array(vapidPublicKey)
         });
         // サブスクリプションをサーバーに送信
         await fetch('YOUR_SERVER_ENDPOINT/subscribe', {
@@ -67,10 +70,22 @@
       }
     });
 
+    // Base64をUint8Arrayに変換
+    function urlB64ToUint8Array(base64String) {
+      const padding = '='.repeat((4 - base64String.length % 4) % 4);
+      const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
+      const rawData = window.atob(base64);
+      const outputArray = new Uint8Array(rawData.length);
+      for (let i = 0; i < rawData.length; ++i) {
+        outputArray[i] = rawData.charCodeAt(i);
+      }
+      return outputArray;
+    }
+
     // 初回RSS取得
     fetchRSS();
-    // 定期的にRSSをチェック（例：5分ごと）
-    setInterval(fetchRSS, 5 * 60 * 1000);
+    // 定期的にRSSをチェック
+    setInterval(fetchRSS, 30 * 1000);
   </script>
 </body>
 </html>
