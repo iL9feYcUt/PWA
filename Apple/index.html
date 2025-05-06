@@ -61,7 +61,7 @@
           applicationServerKey: urlB64ToUint8Array(vapidPublicKey)
         });
         // サブスクリプションをサーバーに送信
-        await fetch('YOUR_SERVER_ENDPOINT/subscribe', {
+        await fetch('https://rss-notifier.alchemy0-106nm-elementchi.workers.dev/subscribe', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(subscription)
