@@ -5,4 +5,7 @@
   <li>
   <a href="https://il9feycut.github.io/PWA/jreast/">JR東日本</a>
   </li>
+    <li>
+  <a href="https://il9feycut.github.io/PWA/snake.html">🐍</a>
+  </li>
 </ul>
