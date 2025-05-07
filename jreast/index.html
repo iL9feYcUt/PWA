@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSSフィード通知PWA</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#333333"/>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            line-height: 1.6;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #notification-status {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .status-granted {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .status-denied {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .status-default {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeeba;
+        }
+    </style>
+</head>
+<body>
+    <h1>RSSフィード通知PWA</h1>
+    <p>このPWAは、指定されたRSSフィード (<a href="https://cdn.feedcontrol.net/9803/17327-E5PpVrVETwnvL.xml" target="_blank" rel="noopener noreferrer">こちら</a>) の更新をチェックし、新しい記事があれば通知します。</p>
+    <p>iOSでは、このアプリをホーム画面に追加し、通知を許可していただく必要があります。バックグラウンドでの自動更新は限定的で、主にアプリを開いた際に更新がチェックされます。</p>
+
+    <button id="enableNotificationsButton" style="display:none;">通知を許可する</button>
+    <div id="notification-status"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
