@@ -5,7 +5,10 @@
   <li>
   <a href="https://il9feycut.github.io/PWA/jreast/">JR東日本</a>
   </li>
-    <li>
+  <li>
   <a href="https://il9feycut.github.io/PWA/snake.html">🐍</a>
+  </li>
+  <li>
+  <a href="https://il9feycut.github.io/PWA/2048.html">2048ゲーム</a>
   </li>
 </ul>
