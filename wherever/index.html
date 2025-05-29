@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+        @font-face {
+            font-family: "Shin-Go-N";
+            src: url("") format("truetype");
+        }
+
+        body {
+            font-family: "Helvetica", "Shin-Go-N", sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        div#aa {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #d5b972;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 5vw;
+        }
+
+        #aa ul {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0;
+        }
+
+        #aa li {
+            list-style: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            margin: 10px;
+            line-height: 240%;
+            text-align: center;
+        }
+
+        audio {
+            display: none;
+        }
+    </style>
+    <title>発車ベル</title>
+</head>
+
+<body>
+    <h1>発車ベル</h1>
+    <div id="aa">
+        <img src="" alt="">
+        <ul>
+            <li style="background-color: red;" onclick="playOn()">ON</li>
+            <li style="background-color: black;" onclick="playOff()">OFF</li>
+            <audio id="onSound" src="CieloEstrelladoh.mp3" loop></audio>
+            <audio id="offSound" src="off.mp3"></audio>
+        </ul>
+    </div>
+    <script>
+        const onSound = document.getElementById('onSound');
+        const offSound = document.getElementById('offSound');
+
+        function playOn() {
+            offSound.pause(); // OFFの音を停止
+            offSound.currentTime = 0; // OFFの音を最初に戻す
+            onSound.play(); // ONの音を再生（ループはaudio要素で設定済み）
+        }
+
+        function playOff() {
+            onSound.pause(); // ONの音を停止
+            onSound.currentTime = 0; // ONの音を最初に戻す
+            offSound.play(); // OFFの音を再生
+        }
+    </script>
+</body>
+
+</html>
