@@ -16,15 +16,17 @@
             color: #333;
             margin: 0;
             padding: 20px;
+            text-align: center;
         }
 
-        div#aa {
+        #aa {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             background-color: #d5b972;
-            width: 100%;
+            width: 150px;
+            margin: 0 auto;
         }
 
         h1 {
@@ -40,12 +42,13 @@
         }
 
         #aa li {
+            font-size: 1.2rem;
             list-style: none;
             color: white;
-            width: 40px;
-            height: 40px;
-            margin: 10px;
-            line-height: 240%;
+            width: 60px;
+            height: 60px;
+            margin: 15px;
+            line-height: 300%;
             text-align: center;
         }
 
@@ -58,29 +61,75 @@
 
 <body>
     <h1>発車ベル</h1>
-    <div id="aa">
-        <img src="" alt="">
-        <ul>
-            <li style="background-color: red;" onclick="playOn()">ON</li>
-            <li style="background-color: black;" onclick="playOff()">OFF</li>
-            <audio id="onSound" src="CieloEstrelladoh.mp3" loop></audio>
-            <audio id="offSound" src="off.mp3"></audio>
-        </ul>
+    <div id="a">
+        <div id="aa">
+            <img src="" alt="">
+            <ul>
+                <li style="background-color: red;" onclick="playOn()">ON</li>
+                <li style="background-color: black;" onclick="playOff()">OFF</li>
+                <audio id="onSound" src="" loop></audio>
+                <audio id="offSound" src="sounds/off.mp3"></audio>
+            </ul>
+        </div>
+        <select name="" id="musicSelect"></select>
+        <select name="" id="">
+            <option value="">2番線</option>
+        </select>
     </div>
     <script>
+        const mp3Files = [
+            "Water Crown.mp3",
+            "Verde Rayo.mp3",
+            "CieloEstrellado半低音.mp3",
+            "Gota del vient.mp3",
+            "JR-SH1-3.mp3",
+            "JR-SH2-3.mp3",
+            "JR-SH9-3.mp3",
+            "Mellow time.mp3",
+            "スプリングボックス.mp3",
+            "メロディー.mp3",
+            "希望のまち09.mp3",
+            "線路は続くよどこまでもA.mp3",
+            "線路は続くよどこまでもB.mp3",
+            "線路は続くよどこまでもC.mp3",
+            "窓の花飾り.mp3",
+            "蝶々のように.mp3",
+            "美しき丘.mp3",
+            "木もれ日の散歩道.mp3",
+        ];
+        const musicSelect = document.getElementById('musicSelect');
         const onSound = document.getElementById('onSound');
         const offSound = document.getElementById('offSound');
 
+        // option生成
+        mp3Files.forEach(file => {
+            const option = document.createElement('option');
+            option.value = file;
+            option.textContent = file.replace(/\.mp3$/i, '');
+            musicSelect.appendChild(option);
+        });
+
+        // 選択変更時にonSoundのsrcを変更
+        musicSelect.addEventListener('change', function () {
+            onSound.src = 'sounds/' + this.value;
+            onSound.load();
+        });
+
+        // 初期値
+        onSound.src = 'sounds/' + mp3Files[0];
+
         function playOn() {
-            offSound.pause(); // OFFの音を停止
-            offSound.currentTime = 0; // OFFの音を最初に戻す
-            onSound.play(); // ONの音を再生（ループはaudio要素で設定済み）
+            onSound.currentTime = 0;
+            onSound.play();
         }
 
         function playOff() {
-            onSound.pause(); // ONの音を停止
-            onSound.currentTime = 0; // ONの音を最初に戻す
-            offSound.play(); // OFFの音を再生
+            onSound.pause();
+            onSound.currentTime = 0;
+            setTimeout(() => {
+                offSound.currentTime = 0;
+                offSound.play();
+            }, 1500);
         }
     </script>
 </body>
