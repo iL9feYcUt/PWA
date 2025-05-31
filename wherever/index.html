@@ -80,7 +80,8 @@
         const mp3Files = [
             "Water Crown.mp3",
             "Verde Rayo.mp3",
-            "CieloEstrellado半低音.mp3",
+            "Cielo Estrellado半低音.mp3",
+            "Cielo Estrellado.mp3",
             "Gota del vient.mp3",
             "JR-SH1-3.mp3",
             "JR-SH2-3.mp3",
@@ -96,13 +97,22 @@
             "蝶々のように.mp3",
             "美しき丘.mp3",
             "木もれ日の散歩道.mp3",
+            "JRE-IKST-007-01.mp3",
+            "JRE-IKST-007-02.mp3",
+            "JRE-IKST-007-03.mp3",
+            "JRE-IKST-007-04.mp3",
+            "Airly.mp3",
+            "せせらぎ.mp3",
+            "twilight.mp3",
         ];
         const musicSelect = document.getElementById('musicSelect');
         const onSound = document.getElementById('onSound');
         const offSound = document.getElementById('offSound');
 
+        const sortedMp3Files = mp3Files.slice().sort((a, b) => a.localeCompare(b, 'ja'));
+
         // option生成
-        mp3Files.forEach(file => {
+        sortedMp3Files.forEach(file => {
             const option = document.createElement('option');
             option.value = file;
             option.textContent = file.replace(/\.mp3$/i, '');
@@ -116,7 +126,7 @@
         });
 
         // 初期値
-        onSound.src = 'sounds/' + mp3Files[0];
+        onSound.src = 'sounds/' + sortedMp3Files[0];
 
         function playOn() {
             onSound.currentTime = 0;
