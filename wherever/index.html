@@ -29,6 +29,10 @@
             margin: 0 auto;
         }
 
+        #select {
+            margin-top: 30px;
+        }
+
         h1 {
             text-align: center;
             font-size: 5vw;
@@ -71,10 +75,12 @@
                 <audio id="offSound" src="sounds/off.mp3"></audio>
             </ul>
         </div>
-        <select name="" id="musicSelect"></select>
-        <select name="" id="">
-            <option value="">2番線</option>
-        </select>
+        <div id="select">
+            <select name="" id="musicSelect"></select>
+            <select name="" id="">
+                <option value="">2番線</option>
+            </select>
+        </div>
     </div>
     <script>
         const mp3Files = [
@@ -105,10 +111,11 @@
             "蝶々のように.mp3",
             "美しき丘.mp3",
             "木もれ日の散歩道.mp3",
+            "JRE-IKST-001-01.mp3",
             "JRE-IKST-007-01.mp3",
             "JRE-IKST-007-02.mp3",
             "JRE-IKST-007-03.mp3",
-            "JRE-IKST-007-04.mp3",
+            "JRE-IKST-007-05.mp3",
             "Airly.mp3",
             "せせらぎ.mp3",
             "twilight.mp3",
@@ -120,6 +127,14 @@
             "常磐3-1番.mp3",
             "チャイム.mp3",
             "鉄道唱歌B.mp3",
+            "蒲田行進曲A.mp3",
+            "蒲田行進曲B.mp3",
+            "コーラルリーフ.mp3",
+            "Sunrise.mp3",
+            "クラルテ.mp3",
+            "恋の通勤列車.mp3",
+            "see you again.mp3",
+            "アマリリス赤羽.mp3",
         ];
         const musicSelect = document.getElementById('musicSelect');
         const onSound = document.getElementById('onSound');
