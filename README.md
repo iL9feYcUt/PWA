@@ -12,6 +12,6 @@
   <a href="https://il9feycut.github.io/PWA/2048.html">2048ゲーム</a>
   </li>
   <li>
-  <a href="https://il9feycut.github.io/PWA/wherever/">どこでも</a>
+  <a href="https://il9feycut.github.io/PWA/latest_クームーム.html">どこでも</a>
   </li>
 </ul>
